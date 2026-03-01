@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Project Request Form</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Futuristic Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
+
+
+  <!-- Email Js Script here-- -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+  </script>
+  <script type="text/javascript">
+    (function () {
+      emailjs.init({
+        publicKey: "Og4w55NkPGpN-uNv7",
+      });
+    })();
+  </script>
+
+
+  <style>
+    :root {
+      --bg-main: #050816;
+      --bg-card: rgba(10, 20, 40, 0.95);
+      --accent: #00f6ff;
+      --accent-soft: rgba(0, 246, 255, 0.18);
+      --text-main: #f5f7ff;
+      --text-muted: #a5b1d8;
+      --error: #ff4e6a;
+      --radius-lg: 18px;
+      --radius-pill: 999px;
+      --shadow-soft: 0 24px 60px rgba(0, 0, 0, 0.7);
+      --border-glow: 0 0 18px rgba(0, 246, 255, 0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 16px;
+      background:
+        radial-gradient(circle at 0% 0%, #1e1b4b 0, transparent 55%),
+        radial-gradient(circle at 100% 0%, #0f766e 0, transparent 55%),
+        radial-gradient(circle at 100% 100%, #3730a3 0, transparent 55%),
+        radial-gradient(circle at 0% 100%, #0f172a 0, transparent 55%),
+        var(--bg-main);
+      color: var(--text-main);
+    }
+
+    .form-shell {
+      width: 100%;
+      max-width: 720px;
+      background: radial-gradient(circle at top left, rgba(0, 246, 255, 0.08), transparent 60%),
+        radial-gradient(circle at bottom right, rgba(94, 234, 212, 0.08), transparent 60%),
+        var(--bg-card);
+      border-radius: 24px;
+      padding: 28px 26px 26px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      position: relative;
+      overflow: hidden;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .form-shell::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      border-radius: inherit;
+      background: conic-gradient(from 180deg,
+          rgba(56, 189, 248, 0.65),
+          rgba(59, 130, 246, 0.1),
+          rgba(45, 212, 191, 0.7),
+          rgba(129, 140, 248, 0.1),
+          rgba(56, 189, 248, 0.65));
+      opacity: 0;
+      z-index: -1;
+      filter: blur(10px);
+      transition: opacity 0.45s ease-out;
+    }
+
+    .form-shell:hover::before,
+    .form-shell:focus-within::before {
+      opacity: 1;
+    }
+
+    .form-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 22px;
+      align-items: flex-start;
+    }
+
+    .form-title-block {
+      max-width: 75%;
+    }
+
+    .form-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .title-pill {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      color: var(--accent);
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .subtitle {
+      margin-top: 6px;
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .status-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border-radius: var(--radius-pill);
+      padding: 6px 10px;
+      font-size: 0.72rem;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(56, 189, 248, 0.45);
+      box-shadow: 0 0 12px rgba(34, 211, 238, 0.35);
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.7);
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .form-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .form-group {
+      flex: 1 1 min(260px, 100%);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      position: relative;
+    }
+
+    label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .required-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 10px rgba(56, 189, 248, 0.9);
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(148, 163, 184, 0.55);
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--text-main);
+      font-size: 0.88rem;
+      outline: none;
+      transition: border 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, transform 0.2s ease;
+      box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.2);
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: rgba(148, 163, 184, 0.7);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 90px;
+      max-height: 220px;
+      line-height: 1.5;
+    }
+
+    .select-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .select-wrapper select {
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      padding-right: 40px;
+      cursor: pointer;
+    }
+
+    .select-wrapper::after {
+      content: "▾";
+      position: absolute;
+      right: 14px;
+      font-size: 0.9rem;
+      pointer-events: none;
+      color: rgba(148, 163, 184, 0.95);
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      border-color: var(--accent);
+      box-shadow: var(--border-glow);
+      transform: translateY(-1px);
+      background: radial-gradient(circle at top left, rgba(45, 212, 191, 0.1), transparent 55%),
+        rgba(15, 23, 42, 0.97);
+    }
+
+    .hint {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    .error-message {
+      font-size: 0.72rem;
+      color: var(--error);
+      opacity: 0;
+      max-height: 0;
+      transform: translateY(-2px);
+      transition: opacity 0.18s ease, max-height 0.18s ease, transform 0.18s ease;
+    }
+
+    form.show-errors input:invalid~.error-message,
+    form.show-errors textarea:invalid~.error-message,
+    form.show-errors select:invalid~.error-message {
+      opacity: 1;
+      max-height: 40px;
+      transform: translateY(0);
+    }
+
+    form.show-errors input:invalid,
+    form.show-errors textarea:invalid,
+    form.show-errors select:invalid {
+      border-color: var(--error);
+      box-shadow: 0 0 0 1px rgba(248, 113, 113, 0.45);
+    }
+
+    .form-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-top: 8px;
+      flex-wrap: wrap;
+    }
+
+    .note {
+      font-size: 0.74rem;
+      color: var(--text-muted);
+    }
+
+    .note span {
+      color: var(--accent);
+    }
+
+    .btn-primary {
+      padding: 10px 20px;
+      border-radius: var(--radius-pill);
+      border: none;
+      outline: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      background: radial-gradient(circle at 0 0, #22d3ee, #38bdf8);
+      color: #020617;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 18px 40px rgba(8, 47, 73, 0.75);
+      transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .btn-primary span.icon {
+      font-size: 1rem;
+      transform: translateY(1px);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px) scale(1.01);
+      filter: brightness(1.05);
+      box-shadow: 0 22px 50px rgba(8, 47, 73, 0.95);
+    }
+
+    .btn-primary:active {
+      transform: translateY(0) scale(0.99);
+      box-shadow: 0 10px 25px rgba(8, 47, 73, 0.8);
+    }
+
+    /* Toast (top-right message) */
+    .toast {
+      position: fixed;
+      top: 18px;
+      right: 18px;
+      padding: 10px 14px;
+      border-radius: var(--radius-pill);
+      background: rgba(15, 23, 42, 0.98);
+      border: 1px solid rgba(56, 189, 248, 0.6);
+      color: var(--text-main);
+      font-size: 0.78rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: var(--shadow-soft);
+      opacity: 0;
+      transform: translateY(-10px);
+      pointer-events: none;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+      z-index: 999;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .toast-icon {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.9);
+    }
+
+    /* Success Screen */
+    .hidden {
+      display: none;
+    }
+
+    .success-shell {
+      text-align: center;
+    }
+
+    .success-icon-ring {
+      width: 70px;
+      height: 70px;
+      margin: 8px auto 14px;
+      border-radius: 50%;
+      border: 2px solid rgba(34, 211, 238, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 24px rgba(56, 189, 248, 0.8);
+      position: relative;
+    }
+
+    .success-icon-ring::before {
+      content: "";
+      position: absolute;
+      inset: -6px;
+      border-radius: inherit;
+      border: 1px dashed rgba(56, 189, 248, 0.5);
+      opacity: 0.8;
+    }
+
+    .success-icon {
+      font-size: 1.8rem;
+    }
+
+    .success-title {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .success-subtitle {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+      line-height: 1.5;
+    }
+
+    .success-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      background: rgba(15, 23, 42, 0.96);
+      margin-bottom: 16px;
+    }
+
+    .success-badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.9);
+    }
+
+    .success-footnote {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 10px;
+    }
+
+    .btn-ghost {
+      margin-top: 4px;
+      padding: 8px 14px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: rgba(15, 23, 42, 0.96);
+      color: var(--text-main);
+      font-size: 0.8rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .btn-ghost:hover {
+      background: rgba(15, 23, 42, 1);
+      transform: translateY(-1px);
+      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.9);
+    }
+
+    .btn-ghost span.icon {
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 640px) {
+      .form-shell {
+        padding: 22px 18px 18px;
+      }
+
+      .form-title {
+        font-size: 1.25rem;
+      }
+
+      .form-title-block {
+        max-width: 100%;
+      }
+
+      .form-header {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- FORM CARD -->
+  <div class="form-shell" id="formContainer">
+    <div class="form-header">
+      <div class="form-title-block">
+        <h1 class="form-title">
+          Project Request Form
+          <span class="title-pill">Freelance Services</span>
+        </h1>
+        <p class="subtitle">
+          Tell us what you need – website, app, or marketing – and we’ll craft a custom solution for you.
+        </p>
+      </div>
+      <div class="status-chip">
+        <span class="status-dot"></span>
+        <span>Active • Taking new projects</span>
+      </div>
+    </div>
+
+    <form id="projectRequestForm" novalidate>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="fullName">
+            <span class="required-dot"></span>
+            Full Name
+          </label>
+          <input id="fullName" name="fullName" type="text" placeholder="Enter your full name" required />
+          <span class="error-message">Please enter your name.</span>
+        </div>
+
+        <div class="form-group">
+          <label for="contactNumber">
+            <span class="required-dot"></span>
+            Contact Number
+          </label>
+          <input id="contactNumber" name="contactNumber" type="tel" placeholder="10-digit WhatsApp / phone number"
+            pattern="[0-9]{10}" required />
+          <span class="hint">Numbers only, no spaces or +91.</span>
+          <span class="error-message">Please enter a valid 10-digit number.</span>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="email">
+            <span class="required-dot"></span>
+            Email Address
+          </label>
+          <input id="email" name="email" type="email" placeholder="name@example.com" required />
+          <span class="error-message">Please enter a valid email address.</span>
+        </div>
+
+        <div class="form-group">
+          <label for="address">
+            <span class="required-dot"></span>
+            Address
+          </label>
+          <textarea id="address" name="address" placeholder="City, Country or full address" rows="2"
+            required></textarea>
+          <span class="error-message">Please enter your address.</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="serviceType">
+          <span class="required-dot"></span>
+          What do you need?
+        </label>
+        <div class="select-wrapper">
+          <select id="serviceType" name="serviceType" required>
+            <option value="" disabled selected>Choose a service</option>
+            <option value="application-making">Application Making</option>
+            <option value="website-making">Website Making</option>
+            <option value="digital-marketing">Digital Marketing</option>
+            <option value="email-marketing">Email Marketing</option>
+          </select>
+        </div>
+        <span class="error-message">Please choose one service.</span>
+      </div>
+
+      <div class="form-group">
+        <label for="projectDescription">
+          <span class="required-dot"></span>
+          Project Description
+        </label>
+        <textarea id="projectDescription" name="projectDescription"
+          placeholder="Example: I want a modern portfolio website with 5 pages (Home, About, Services, Portfolio, Contact). Include WhatsApp chat button, contact form, and dark theme UI."
+          required></textarea>
+        <span class="error-message">Please describe what you want us to build.</span>
+      </div>
+
+      <div class="form-footer">
+        <p class="note">
+          <span>*</span> All fields are mandatory. The form will submit only when every detail is filled.
+        </p>
+        <button type="submit" class="btn-primary">
+          <span>Submit Request</span>
+          <span class="icon">↗</span>
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <!-- SUCCESS CARD (NEXT INTERFACE) -->
+  <div class="form-shell success-shell hidden" id="successContainer">
+    <div class="success-icon-ring">
+      <span class="success-icon">✔</span>
+    </div>
+    <h2 class="success-title">Your response has been submitted</h2>
+    <p class="success-subtitle">
+      Thank you for reaching out to us. Our team will contact you within
+      <strong>24 hours</strong> for your assistance and to discuss your project in detail.
+    </p>
+
+    <div class="success-badge">
+      <span class="success-badge-dot"></span>
+      <span>Ticket created • You will receive updates on your EMAIL </span>
+    </div>
+
+    <p class="success-footnote">
+      You can keep exploring our website while we review your requirements.
+    </p>
+
+    <!-- Optional: button to go back to form if user wants to submit another request -->
+    <button class="btn-ghost" id="backToFormBtn">
+      <span class="icon">↩</span>
+      <span>Submit another request</span>
+    </button>
+  </div>
+
+  <!-- Toast message -->
+  <div id="formToast" class="toast">
+    <span class="toast-icon"></span>
+    <span id="toastText"></span>
+  </div>
+
+  <script>
+    const form = document.getElementById("projectRequestForm");
+    const toast = document.getElementById("formToast");
+    const toastText = document.getElementById("toastText");
+
+    const formContainer = document.getElementById("formContainer");
+    const successContainer = document.getElementById("successContainer");
+    const backToFormBtn = document.getElementById("backToFormBtn");
+
+    function showToast(message) {
+      toastText.textContent = message;
+      toast.classList.add("show");
+
+      setTimeout(() => {
+        toast.classList.remove("show");
+      }, 2600);
+    }
+
+    form.addEventListener("submit", function (event) {
+      // Prevent default submission - we'll handle validation and sending
+      event.preventDefault();
+
+      // Check HTML5 validity
+      if (!form.checkValidity()) {
+        form.classList.add("show-errors");
+        showToast("Please fill all required details before submitting.");
+        return;
+      }
+
+      // Remove any previous error styles
+      form.classList.remove("show-errors");
+
+      // Build params for email
+      const params = {
+        fullName: document.getElementById("fullName").value,
+        contactNumber: document.getElementById("contactNumber").value,
+        email: document.getElementById("email").value,
+        address: document.getElementById("address").value,
+        serviceType: document.getElementById("serviceType").value,
+        projectDescription: document.getElementById("projectDescription").value,
+      };
+
+      // Send email and show success only after it resolves
+      sendMail(params)
+        .then(() => {
+          showToast("Your request has been sent via email!");
+          formContainer.classList.add("hidden");
+          successContainer.classList.remove("hidden");
+          window.scrollTo({ top: 0, behavior: "smooth" });
+          form.reset();
+        })
+        .catch((err) => {
+          console.error("Email send failed:", err);
+          showToast("Failed to send request. Please try again later.");
+        });
+    });
+
+
+    function sendMail(params) {
+      // return the promise so caller can react to success/failure
+      return emailjs.send("service_k4cdatn", "template_qjzyqhk", params);
+    }
+
+
+    // Optional: allow user to go back and submit another request
+    backToFormBtn.addEventListener("click", () => {
+      successContainer.classList.add("hidden");
+      formContainer.classList.remove("hidden");
+      form.reset(); // clear previous values
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    // Pre-populate fields from URL parameters if they exist
+    window.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const nameParam = urlParams.get('name');
+      const emailParam = urlParams.get('email');
+      const msgParam = urlParams.get('msg');
+
+      if (nameParam) document.getElementById('fullName').value = decodeURIComponent(nameParam);
+      if (emailParam) document.getElementById('email').value = decodeURIComponent(emailParam);
+      if (msgParam) document.getElementById('projectDescription').value = decodeURIComponent(msgParam);
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Development Services | Your Company Name</title>
+    <link rel="stylesheet" href="style1.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .service-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.8)), url('services_img/web-bg.jpg') center/cover;
+            padding: 100px 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .service-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 50px 20px;
+        }
+
+        .service-section {
+            margin-bottom: 50px;
+        }
+
+        .service-section h2 {
+            color: #d8732a;
+            margin-bottom: 20px;
+        }
+
+        .service-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .feature-card {
+            background: #1a1a1a;
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid #333;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: #d8732a;
+        }
+
+        .feature-card i {
+            font-size: 2.5rem;
+            color: #d8732a;
+            margin-bottom: 15px;
+        }
+
+        .cta-section {
+            text-align: center;
+            margin-top: 50px;
+            padding: 50px 20px;
+            background: #1a1a1a;
+            border-radius: 10px;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: #d8732a;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: #b55e22;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(216, 115, 42, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header Section -->
+    <div class="container">
+        <header>
+            <h1 data-aos="fade-down" data-aos-duration="1500" class="logo">RCODE</h1>
+
+        </header>
+        <header class="newnav">
+            <div class="div-list ">
+
+                <ul class="ul-list">
+                    <li class="active">
+                        <i class="fa-regular fa-house"></i>
+                        <a href="index.html#home" class="nav-link">Home</a>
+                    </li>
+                    <li>
+                        <i class="fa-regular fa-address-card"></i>
+                        <a href="index.html#about" class="nav-link">About</a>
+                    </li>
+                    <li>
+                        <i class="fa-regular fa-folder-open"></i>
+                        <a href="index.html#project" class="nav-link">Projects</a>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-code"></i>
+                        <a href="index.html#services" class="nav-link">services</a>
+                    </li>
+                    <li>
+                        <i class="fa-regular fa-envelope"></i>
+                        <a href="index.html#contact" class="nav-link">Contact</a>
+                    </li>
+                </ul>
+
+            </div>
+        </header>
+    </div>
+
+
+    <!-- Hero Section -->
+    <section class="service-hero">
+        <div class="container">
+            <h1>Web Development Services</h1>
+            <p>Transforming your ideas into powerful digital experiences</p>
+        </div>
+    </section>
+
+    <!-- Service Content -->
+    <div class="service-content">
+        <div class="service-section">
+            <h2>Our Web Development Solutions</h2>
+            <p>We create custom, responsive websites that not only look stunning but also deliver exceptional
+                performance and user experience. Our web development services are designed to help your business
+                establish a strong online presence and achieve your digital goals.</p>
+
+            <div class="service-features">
+                <div class="feature-card">
+                    <i class="fas fa-laptop-code"></i>
+                    <h3>Custom Web Development</h3>
+                    <p>Tailored solutions built from scratch to meet your specific business requirements and objectives.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Responsive Design</h3>
+                    <p>Websites that look and function perfectly on all devices, from desktops to smartphones.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-shopping-cart"></i>
+                    <h3>E-commerce Solutions</h3>
+                    <p>Powerful online stores with secure payment gateways and intuitive shopping experiences.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="service-section">
+            <h2>Our Approach</h2>
+            <p>We follow a comprehensive development process to ensure your project's success:</p>
+            <ol>
+                <li><strong>Discovery & Planning:</strong> Understanding your business goals and requirements.</li>
+                <li><strong>UI/UX Design:</strong> Creating intuitive and engaging user interfaces.</li>
+                <li><strong>Development:</strong> Building robust and scalable web applications.</li>
+                <li><strong>Testing:</strong> Rigorous testing across devices and browsers.</li>
+                <li><strong>Deployment & Support:</strong> Launching your site and providing ongoing maintenance.</li>
+            </ol>
+        </div>
+
+        <div class="cta-section">
+            <h2>Ready to Build Your Dream Website?</h2>
+            <p>Let's discuss how we can bring your vision to life with our expert web development services.</p>
+            <a href="index.html#contact" class="btn-primary">Get Started</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="copyright">
+        <p>© 2023 Your Company Name. All rights reserved.</p>
+    </div>
+
+    <script>
+        var sidemenu = document.getElementById("sidemenu");
+        function openmenu() {
+            sidemenu.style.right = "0";
+        }
+        function closemenu() {
+            sidemenu.style.right = "-200px";
+        }
+    </script>
+</body>
+
+</html>

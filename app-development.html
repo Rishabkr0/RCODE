@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Development Services | Your Company Name</title>
+    <link rel="stylesheet" href="style1.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .service-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.8)), url('services_img/app-bg.jpg') center/cover;
+            padding: 100px 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .service-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 50px 20px;
+        }
+
+        .service-section {
+            margin-bottom: 50px;
+        }
+
+        .service-section h2 {
+            color: #d8732a;
+            margin-bottom: 20px;
+        }
+
+        .service-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .feature-card {
+            background: #1a1a1a;
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid #333;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: #d8732a;
+        }
+
+        .feature-card i {
+            font-size: 2.5rem;
+            color: #d8732a;
+            margin-bottom: 15px;
+        }
+
+        .cta-section {
+            text-align: center;
+            margin-top: 50px;
+            padding: 50px 20px;
+            background: #1a1a1a;
+            border-radius: 10px;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: #d8732a;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: #b55e22;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(216, 115, 42, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header Section -->
+    <!-- <header id="header">
+        <div class="container">
+            <nav>
+                <img src="../images/logo.png" class="logo">
+                <ul id="sidemenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <i class="fas fa-times" onclick="closemenu()"></i>
+                </ul>
+                <i class="fas fa-bars" onclick="openmenu()"></i>
+            </nav>
+        </div>
+    </header> -->
+
+
+    <div class="container">
+        <header>
+            <h1 data-aos="fade-down" data-aos-duration="1500" class="logo">RCODE</h1>
+
+        </header>
+        <header class="newnav">
+            <div class="div-list ">
+
+                <ul class="ul-list">
+                    <li class="active">
+                        <i class="fa-regular fa-house"></i>
+                        <a href="index.html#home" class="nav-link">Home</a>
+                    </li>
+                    <li>
+                        <i class="fa-regular fa-address-card"></i>
+                        <a href="index.html#about" class="nav-link">About</a>
+                    </li>
+                    <li>
+                        <i class="fa-regular fa-folder-open"></i>
+                        <a href="index.html#project" class="nav-link">Projects</a>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-code"></i>
+                        <a href="index.html#services" class="nav-link">services</a>
+                    </li>
+                    <li>
+                        <i class="fa-regular fa-envelope"></i>
+                        <a href="index.html#contact" class="nav-link">Contact</a>
+                    </li>
+                </ul>
+
+            </div>
+        </header>
+    </div>
+
+
+
+    <!-- Hero Section -->
+    <section class="service-hero">
+        <div class="container">
+            <h1>App Development Services</h1>
+            <p>Building innovative mobile solutions that drive engagement and growth</p>
+        </div>
+    </section>
+
+    <!-- Service Content -->
+    <div class="service-content">
+        <div class="service-section">
+            <h2>Our App Development Expertise</h2>
+            <p>We create powerful, user-friendly mobile applications that help businesses connect with their audience
+                and achieve their digital objectives. Our cross-platform and native app solutions are designed to
+                deliver exceptional performance and user experience.</p>
+
+            <div class="service-features">
+                <div class="feature-card">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>iOS & Android Apps</h3>
+                    <p>Native applications built specifically for each platform to ensure optimal performance.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-sync-alt"></i>
+                    <h3>Cross-Platform Solutions</h3>
+                    <p>Single codebase applications that work seamlessly across multiple platforms.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-cog"></i>
+                    <h3>Custom Solutions</h3>
+                    <p>Tailored applications designed to meet your specific business requirements.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="service-section">
+            <h2>Our Development Process</h2>
+            <p>We follow a proven methodology to deliver high-quality mobile applications:</p>
+            <ol>
+                <li><strong>Strategy & Planning:</strong> Defining your app's purpose, features, and target audience.
+                </li>
+                <li><strong>UI/UX Design:</strong> Creating intuitive and engaging user interfaces.</li>
+                <li><strong>Development:</strong> Building robust and scalable mobile applications.</li>
+                <li><strong>Testing:</strong> Rigorous testing across devices and platforms.</li>
+                <li><strong>Deployment & Support:</strong> Launching your app and providing ongoing maintenance.</li>
+            </ol>
+        </div>
+
+        <div class="cta-section">
+            <h2>Ready to Build Your Mobile App?</h2>
+            <p>Let's discuss how we can turn your app idea into reality with our expert development services.</p>
+            <a href="index.html#contact" class="btn-primary">Get Started</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="copyright">
+        <p>© 2023 Your Company Name. All rights reserved.</p>
+    </div>
+
+    <script>
+        var sidemenu = document.getElementById("sidemenu");
+        function openmenu() {
+            sidemenu.style.right = "0";
+        }
+        function closemenu() {
+            sidemenu.style.right = "-200px";
+        }
+    </script>
+</body>
+
+</html>
